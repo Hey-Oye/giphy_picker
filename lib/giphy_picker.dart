@@ -70,6 +70,56 @@ class GiphyPicker {
     return result;
   }
 
+  static Future<GiphyGif> pickGifBottomSheet({
+    @required BuildContext context,
+    @required String apiKey,
+    String rating = GiphyRating.g,
+    String lang = GiphyLanguage.english,
+    bool sticker = false,
+    Widget title,
+    ErrorListener onError,
+    bool showPreviewPage = true,
+    GiphyDecorator decorator,
+    bool fullScreenDialog = true,
+    String searchText = 'Search GIPHY',
+    GiphyPreviewType previewType,
+  }) async {
+    GiphyGif result;
+    final _decorator =
+        decorator ?? GiphyDecorator(giphyTheme: Theme.of(context));
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) => GiphyContext(
+          decorator: _decorator,
+          previewType: previewType ?? GiphyPreviewType.previewGif,
+          child: GiphySearchPage(
+            title: title,
+          ),
+          apiKey: apiKey,
+          rating: rating,
+          language: lang,
+          sticker: sticker,
+          onError: onError ?? (error) => _showErrorDialog(context, error),
+          onSelected: (gif) {
+            result = gif;
+            // pop preview page if necessary
+            if (showPreviewPage) {
+              Navigator.pop(context);
+            }
+            // pop giphy_picker
+            Navigator.pop(context);
+          },
+          showPreviewPage: showPreviewPage,
+          searchText: searchText,
+        ),
+        fullscreenDialog: fullScreenDialog,
+      ),
+    );
+
+    return result;
+  }
+
   static void _showErrorDialog(BuildContext context, dynamic error) {
     showDialog(
       context: context,
