@@ -87,36 +87,33 @@ class GiphyPicker {
     GiphyGif result;
     final _decorator =
         decorator ?? GiphyDecorator(giphyTheme: Theme.of(context));
-    await Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => GiphyContext(
-          decorator: _decorator,
-          previewType: previewType ?? GiphyPreviewType.previewGif,
-          child: GiphySearchPage(
-            title: title,
-          ),
-          apiKey: apiKey,
-          rating: rating,
-          language: lang,
-          sticker: sticker,
-          onError: onError ?? (error) => _showErrorDialog(context, error),
-          onSelected: (gif) {
-            result = gif;
-            // pop preview page if necessary
-            if (showPreviewPage) {
-              Navigator.pop(context);
-            }
-            // pop giphy_picker
-            Navigator.pop(context);
-          },
-          showPreviewPage: showPreviewPage,
-          searchText: searchText,
+
+    await showModalBottomSheet(
+      context: context,
+      builder: (context) => GiphyContext(
+        decorator: _decorator,
+        previewType: previewType ?? GiphyPreviewType.previewGif,
+        child: GiphySearchPage(
+          title: title,
         ),
-        fullscreenDialog: fullScreenDialog,
+        apiKey: apiKey,
+        rating: rating,
+        language: lang,
+        sticker: sticker,
+        onError: onError ?? (error) => _showErrorDialog(context, error),
+        onSelected: (gif) {
+          result = gif;
+          // pop preview page if necessary
+          if (showPreviewPage) {
+            Navigator.pop(context);
+          }
+          // pop giphy_picker
+          Navigator.pop(context);
+        },
+        showPreviewPage: showPreviewPage,
+        searchText: searchText,
       ),
     );
-
     return result;
   }
 
