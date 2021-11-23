@@ -97,7 +97,7 @@ class GiphyPicker {
               topLeft: Radius.circular(8), topRight: Radius.circular(8))),
       builder: (context) => Container(
         height: MediaQuery.of(context).size.height * 0.55,
-        padding:
+        margin:
             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: GiphyContext(
           decorator: _decorator,
