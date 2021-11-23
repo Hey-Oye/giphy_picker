@@ -95,7 +95,8 @@ class GiphyPicker {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(8), topRight: Radius.circular(8))),
-      builder: (context) => Padding(
+      builder: (context) => Container(
+        height: MediaQuery.of(context).size.height * 0.5,
         padding:
             EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: GiphyContext(
