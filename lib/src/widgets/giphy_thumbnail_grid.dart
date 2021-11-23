@@ -45,9 +45,9 @@ class GiphyThumbnailGrid extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount:
                 MediaQuery.of(context).orientation == Orientation.portrait
-                    ? 2
-                    : 3,
-            childAspectRatio: 1.6,
+                    ? 3
+                    : 4,
+            childAspectRatio: 1.4,
             crossAxisSpacing: 5,
             mainAxisSpacing: 5));
   }

@@ -32,7 +32,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: SafeArea(
         child: Center(
-          child: _gif == null ? Text('Pick a gif..') : GiphyImage.original(gif: _gif),
+          child: _gif == null
+              ? Text('Pick a gif..')
+              : GiphyImage.original(gif: _gif),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -40,9 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.search),
         onPressed: () async {
           // request your Giphy API key at https://developers.giphy.com/
-          final gif = await GiphyPicker.pickGif(
+          final gif = await GiphyPicker.pickGifBottomSheet(
             context: context,
-            apiKey: '[YOUR GIPHY APIKEY]',
+            apiKey: 'FJXirSZPeGGwrCmbL0thC20auJksrJ7s',
             fullScreenDialog: false,
             previewType: GiphyPreviewType.previewWebp,
             decorator: GiphyDecorator(

@@ -91,6 +91,7 @@ class GiphyPicker {
     await showModalBottomSheet(
       context: context,
       isScrollControlled: true,
+      isDismissible: true,
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(

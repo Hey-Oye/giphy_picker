@@ -81,14 +81,14 @@ class _GiphySearchViewState extends State<GiphySearchView> {
                                   scrollController: _scrollController),
                               onRefresh: () =>
                                   _search(giphy, term: _textController.text)),
-                          onNotification: (n) {
-                            // hide keyboard when scrolling
-                            if (n is UserScrollNotification) {
-                              FocusScope.of(context).requestFocus(FocusNode());
-                              return true;
-                            }
-                            return false;
-                          },
+                          // onNotification: (n) {
+                          //   // hide keyboard when scrolling
+                          //   if (n is UserScrollNotification) {
+                          //     FocusScope.of(context).requestFocus(FocusNode());
+                          //     return true;
+                          //   }
+                          //   return false;
+                          // },
                         )
                       : Center(child: Text('No results'));
                 } else if (snapshot.hasError) {

@@ -15,6 +15,7 @@ class GiphySearchPage extends StatelessWidget {
       return Theme(
         data: giphyDecorator.giphyTheme,
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: giphyDecorator.showAppBar != null && giphyDecorator.showAppBar
               ? AppBar(title: title)
               : null,
