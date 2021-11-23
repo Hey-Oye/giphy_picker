@@ -90,28 +90,33 @@ class GiphyPicker {
 
     await showModalBottomSheet(
       context: context,
-      builder: (context) => GiphyContext(
-        decorator: _decorator,
-        previewType: previewType ?? GiphyPreviewType.previewGif,
-        child: GiphySearchPage(
-          title: title,
-        ),
-        apiKey: apiKey,
-        rating: rating,
-        language: lang,
-        sticker: sticker,
-        onError: onError ?? (error) => _showErrorDialog(context, error),
-        onSelected: (gif) {
-          result = gif;
-          // pop preview page if necessary
-          if (showPreviewPage) {
+      isScrollControlled: true,
+      builder: (context) => Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: GiphyContext(
+          decorator: _decorator,
+          previewType: previewType ?? GiphyPreviewType.previewGif,
+          child: GiphySearchPage(
+            title: title,
+          ),
+          apiKey: apiKey,
+          rating: rating,
+          language: lang,
+          sticker: sticker,
+          onError: onError ?? (error) => _showErrorDialog(context, error),
+          onSelected: (gif) {
+            result = gif;
+            // pop preview page if necessary
+            if (showPreviewPage) {
+              Navigator.pop(context);
+            }
+            // pop giphy_picker
             Navigator.pop(context);
-          }
-          // pop giphy_picker
-          Navigator.pop(context);
-        },
-        showPreviewPage: showPreviewPage,
-        searchText: searchText,
+          },
+          showPreviewPage: showPreviewPage,
+          searchText: searchText,
+        ),
       ),
     );
     return result;
