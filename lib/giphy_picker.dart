@@ -31,7 +31,7 @@ class GiphyPicker {
     bool showPreviewPage = true,
     GiphyDecorator decorator,
     bool fullScreenDialog = true,
-    String searchText = 'Search GIPHY',
+    String searchText = 'Search',
     GiphyPreviewType previewType,
   }) async {
     GiphyGif result;
@@ -81,7 +81,7 @@ class GiphyPicker {
     bool showPreviewPage = true,
     GiphyDecorator decorator,
     bool fullScreenDialog = true,
-    String searchText = 'Search GIPHY',
+    String searchText = 'Search',
     GiphyPreviewType previewType,
   }) async {
     GiphyGif result;
@@ -95,7 +95,7 @@ class GiphyPicker {
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(8), topRight: Radius.circular(8))),
+              topLeft: Radius.circular(16))),
       builder: (context) => Container(
         height: MediaQuery.of(context).size.height * 0.55,
         margin:

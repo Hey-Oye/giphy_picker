@@ -29,7 +29,7 @@ class GiphyContext extends InheritedWidget {
     this.onSelected,
     this.onError,
     this.showPreviewPage = true,
-    this.searchText = 'Search Giphy',
+    this.searchText = 'Search',
     this.searchDelay,
     this.decorator,
     this.previewType,
